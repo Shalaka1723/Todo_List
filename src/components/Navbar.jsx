@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
   return (
     <>
-    <nav className='flex justify-between bg-orange-300 text-white ' >
+    <nav className='bg-orange-300 flex justify-between text-white ' >
         <div className='logo'>
             <span className='font-bold text-xl mx-8 '>iTask</span>
         </div>
@@ -11,7 +11,8 @@ function Navbar() {
             <li className='hover:font-semibold transition-all duration-75'>Home</li>
             <li className='hover:font-semibold transition-all duration-75'>Your Tasks</li>
         </ul>
-    </nav>      
+    </nav>    
+
     </>
   )
 }
