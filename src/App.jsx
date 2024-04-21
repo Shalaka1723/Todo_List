@@ -46,16 +46,16 @@ const handleCheckbox = (e) => {
     <div className='container bg-cyan-200 mx-auto rounded-xl p-5 my-5 min-[h]:80vh'>
       
         <div className='addTodo my-5'>
-        <h2 className='text-lg font-bold'>Add a Todo</h2>
-        <input type='text'onChange={handleChange} value={todo} className='w-1/2 text-black' ></input>
-        <button onClick={handleAdd} className='bg-violet-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-6'>Add</button>
+          <h2 className='text-lg font-bold'>Add a Todo</h2>
+          <input type='text'onChange={handleChange} value={todo} className='w-1/2 text-black' />
+          <button onClick={handleAdd} className='bg-violet-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-6'>Add</button>
         </div>
       
         <h2 className='text-lg font-bold'>Your Todos</h2>
         <div className="todos">
           {todos.map(item=>{
 
-            return<div key={todo.id} className="todo flex w-1/4 justify-between my-2">
+            return <div key={todo.id} className="todo flex w-1/4 justify-between my-2">
               <input onChange={handleCheckbox} type="checkbox" value={todo.isCompleted} name={todo.id} id="" />
               <div className={item.isCompleted?"line-through":""}>{item.todo}</div>
               <div className='buttons'>
