@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import { v4 as uuidv4 } from 'uuid';
 uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
@@ -8,9 +8,28 @@ function App() {
   const [todo, setTodo] = useState(" ")
   const [todos, setTodos] = useState([])
 
-const handleEdit = ()=>{
+  useEffect(() => {
+    let todoString = localStorage.getItem("todos")
+    if(todoString){
+      let todos = JSON.parse(localStorage.getItem("todos"))
+      setTodos(todos)
+    }
+  }, [])
   
+
+  const saveToLS = (params) => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
   
+
+const handleEdit = (e, id)=>{
+  let t = todos.filter(i=>i.id === id)
+  setTodo(t[0].todo)
+  let newTodos = todos.filter(item=>{
+    return item.id!==id
+  });
+  setTodos(newTodos)
+  saveToLS()
 }
 
 const handleDelete = (e, id)=>{
@@ -21,19 +40,17 @@ const handleDelete = (e, id)=>{
     return item.id!==id
   });
   setTodos(newTodos)
-  
-
+  saveToLS()
 }
 
 const handleChange = (e)=>{
   setTodo(e.target.value)
-
 }
 
 const handleAdd = ()=>{
   setTodos([...todos, {id:uuidv4(), todo, isCompleted: false}])
   setTodo('')
-  console.log(todos)
+  saveToLS()
 
 }
 
@@ -45,6 +62,7 @@ const handleCheckbox = (e) => {
   let newTodos = [...todos];
   newTodos[index].isCompleted = !newTodos[index].isCompleted;
   setTodos(newTodos)
+  saveToLS()
 }
 
 
@@ -70,8 +88,8 @@ const handleCheckbox = (e) => {
                 <input onChange={handleCheckbox} type="checkbox" value={item.isCompleted} name={item.id} id="" />
                 <div className={item.isCompleted?"line-through":""}>{item.todo}</div>
               </div>
-              <div className='buttons'>
-                <button onClick={handleEdit} className='bg-violet-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'>Edit</button>
+              <div className='buttons flex h-full'>
+                <button onClick={(e)=>handleEdit(e, item.id)} className='bg-violet-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'>Edit</button>
                 <button onClick={(e)=>{handleDelete(e, item.id)}} className='bg-violet-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'>Delete</button>
               </div>
 
