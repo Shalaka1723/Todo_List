@@ -76,15 +76,15 @@ const handleCheckbox = (e) => {
 
   return (
     <>
-    <div className=' bg-cyan-200  w-screen h-screen text-white'> 
+    <div className='  bg-stone-700  w-screen h-screen text-cyan-700'> 
         <Navbar/>
 
-        <div className='container bg-stone-700 w-2/3 mx-auto rounded-xl p-5 my-5 min-[h]:80vh'>
+        <div className='container bg-cyan-200 w-2/3 mx-auto rounded-xl p-5 my-5 min-[h]:80vh'>
           
             <div className='addTodo my-5'>
-              <h2 className='text-xl font-bold text-cyan-200'>Add a Todo</h2>
-              <input type='text'onChange={handleChange} value={todo} className='w-1/2 rounded-xl px-2 text-black' />
-              <button onClick={handleAdd} disabled={todo.length<=0} className='bg-violet-300 disabled:bg-red-400 hover:bg-violet-800 py-1 px-1 text-cyan-700 text-sm font-bold rounded-md mx-6'>Save</button>
+              <h2 className='text-xl py-4 font-bold text-cyan-900'>Add a Todo</h2>
+              <input type='text'onChange={handleChange} value={todo} className='w-full rounded-xl px-2 text-black' />
+              <button onClick={handleAdd} disabled={todo.length<=0} className='bg-cyan-900 w-1/3  disabled:bg-stone-400 hover:bg-violet-800 py-1 text-white text-sm font-bold rounded-md my-2 '>Save</button>
             </div>
             <input onChange={toggleFinished} type='checkbox' checked={showFinished} className='text-white'/> Show Finished
             <h2 className='text-lg font-bold'>Your Todos</h2>
@@ -97,9 +97,9 @@ const handleCheckbox = (e) => {
                     <input onChange={handleCheckbox} type="checkbox" checked={item.isCompleted} name={item.id} id="" />
                     <div className={item.isCompleted?"line-through":""}>{item.todo}</div>
                   </div>
-                  <div className='buttons flex h-full'>
-                    <button onClick={(e)=>handleEdit(e, item.id)}  className='bg-stone-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'> <GrEdit /> </button>
-                    <button onClick={(e)=>{handleDelete(e, item.id)}} className='bg-violet-300 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'> <MdDeleteSweep className='bg-color-black' /> </button>
+                  <div className='buttons flex h-full text-white'>
+                    <button onClick={(e)=>handleEdit(e, item.id)}  className='bg-sky-800 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'> <GrEdit /> </button>
+                    <button onClick={(e)=>{handleDelete(e, item.id)}} className='bg-sky-800 hover:bg-violet-800 py-1 px-1 text-sm font-bold rounded-md mx-2'> <MdDeleteSweep className='bg-color-black' /> </button>
                   </div>
 
               </div>

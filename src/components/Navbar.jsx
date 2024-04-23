@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
   return (
     <>
-    <nav className='bg-cyan-950 flex justify-between text-white ' >
+    <nav className='bg-stone-800 flex justify-between text-white ' >
         <div className='logo'>
             <span className='font-bold text-xl mx-8 '>iTask</span>
         </div>
